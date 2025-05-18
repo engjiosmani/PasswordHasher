@@ -1,8 +1,14 @@
-module com.example.saltedhashauthapp {
+module com.example.passwordhasher {
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires com.dlsc.formsfx;
+    requires java.sql;
 
-    opens com.example.saltedhashauthapp to javafx.fxml;
-    exports com.example.saltedhashauthapp;
+    exports application;
+    opens application to javafx.fxml;
+
+    exports controller;
+    opens controller to javafx.fxml;
 }
+
