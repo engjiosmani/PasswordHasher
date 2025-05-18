@@ -1,0 +1,125 @@
+package controller;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import utils.DBUserFunctions;
+import utils.PasswordHasher;
+import utils.Session;
+import utils.Users;
+
+import java.io.IOException;
+import java.util.regex.Pattern;
+
+public class SignUpController {
+
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextField surname;
+
+    @FXML
+    private TextField username;
+
+    @FXML
+    private TextField emailAddress;
+
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private PasswordField confirmPassword;
+
+    @FXML
+    private Button signupButton;
+
+    @FXML
+    private AnchorPane baseAnchor;
+
+    @FXML
+    private TextField confirmPasswordFieldText;
+
+    @FXML
+    private TextField passwordFieldText;
+
+    @FXML
+    private ImageView eye;
+
+    @FXML
+    private ImageView confirmEye;
+
+
+    DBUserFunctions dbUserFunctions = new DBUserFunctions();
+    private boolean check = false;
+
+
+    @FXML
+    private void handleSignIn() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signin.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) baseAnchor.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    public void initialize() {
+        signupButton.setDefaultButton(true);
+    }
+
+    @FXML
+    public void unhidePassword() {
+        if (password.isVisible()) {
+            passwordFieldText.setText(password.getText());
+            password.setManaged(false);
+            password.setVisible(false);
+            passwordFieldText.setManaged(true);
+            passwordFieldText.setVisible(true);
+            Image image = new Image(getClass().getResource("/images/eye.png").toExternalForm());
+            eye.setImage(image);
+            passwordFieldText.requestFocus();
+
+            confirmPasswordFieldText.setText(confirmPassword.getText());
+            confirmPassword.setManaged(false);
+            confirmPassword.setVisible(false);
+            confirmPasswordFieldText.setManaged(true);
+            confirmPasswordFieldText.setVisible(true);
+            confirmEye.setImage(image);
+            check = true;
+
+        } else {
+            password.setText(passwordFieldText.getText());
+            password.setManaged(true);
+            password.setVisible(true);
+            passwordFieldText.setManaged(false);
+            passwordFieldText.setVisible(false);
+            Image image = new Image(getClass().getResource("/images/hidden.png").toExternalForm());
+            eye.setImage(image);
+            password.requestFocus();
+
+            confirmPassword.setText(confirmPasswordFieldText.getText());
+            confirmPassword.setManaged(true);
+            confirmPassword.setVisible(true);
+            confirmPasswordFieldText.setManaged(false);
+            confirmPasswordFieldText.setVisible(false);
+            confirmEye.setImage(image);
+            check = false;
+
+        }
+    }
