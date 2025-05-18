@@ -1,1 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
+    <children>
+        <Button focusTraversable="false" layoutX="541.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#unhidePassword" prefHeight="32.0" prefWidth="24.0" style="-fx-background-color: #e0e0e0; -fx-border-color: #ccc; -fx-background-radius: 0 3 3 0; -fx-border-radius: 0 3 3 0; -fx-padding: 5 10; -fx-font-family: &quot;Segoe UI&quot;, sans-serif; -fx-font-size: 12px; -fx-text-fill: #333; -fx-alignment: CENTER_LEFT; -fx-border-color: #b0bec5;" />
+
+              <TextField fx:id="email" layoutX="335.0" layoutY="125.0" prefHeight="32.0" prefWidth="230.0" styleClass="change" />
+        <PasswordField fx:id="password" layoutX="335.0" layoutY="185.0" prefHeight="32.0" prefWidth="205.0" style="-fx-background-radius: 3 0 0 3; -fx-border-radius: 3 0 0 3;" />
+        <TextField fx:id="passwordFieldText" layoutX="335.0" layoutY="185.0" prefHeight="32.0" prefWidth="205.0" style="-fx-background-radius: 3 0 0 3; -fx-border-radius: 3 0 0 3;" visible="false" />
+
+              <Text fill="#0c1821" layoutX="336.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="accText" text="Log In">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+
+              <Text fill="#0b171fbc" layoutX="335.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="accText" text="Enter your login details below">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+
+              <Text fill="#0b171fbc" layoutX="335.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Email">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+
+              <Text fill="#0b171fbd" layoutX="335.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Password">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+
+              <Button fx:id="loginButton" layoutX="335.0" layoutY="243.0" mnemonicParsing="false" onAction="#signIn" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="accButton1" text="Log In" textFill="WHITE" />
+
+              <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="Sign Up" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+      <ImageView fx:id="eye" fitHeight="21.0" fitWidth="15.0" layoutX="546.0" layoutY="194.0" onMouseClicked="#unhidePassword" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hidden.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutY="309.0" prefHeight="342.0" prefWidth="900.0" style="-fx-background-color: grey;">
+         <children>
+            <Label fx:id="stringShower" layoutX="42.0" layoutY="34.0" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+
+
+    </children>
+</AnchorPane>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
