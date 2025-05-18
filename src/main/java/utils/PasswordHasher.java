@@ -56,3 +56,25 @@ public class PasswordHasher {
         PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATIONS, KEY_LENGTH);
         SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
         byte[] hash = factory.generateSecret(spec).getEncoded();
+        return Base64.getEncoder().encodeToString(hash);
+
+    }
+
+
+    public static byte[] generateSalt() {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+        random.nextBytes(salt);
+        return salt;
+
+    }
+
+
+    public static String encodeSalt(byte[] salt) {
+        return Base64.getEncoder().encodeToString(salt);
+    }
+    public static byte[] decodeSalt(String saltStr) {
+        return Base64.getDecoder().decode(saltStr);
+    }
+
+}
