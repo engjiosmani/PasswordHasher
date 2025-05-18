@@ -60,3 +60,38 @@ resources/
 │   └── hidden.png                    # Toggle icon for hidden password
 └── database/
     └── passwordhasher.sql           # SQL script for table creation 
+
+```md
+## Password Security
+
+The application uses PBKDF2WithHmacSHA256 to hash passwords with a randomly generated salt. Each user gets a unique salt, and only the hashed password + salt are stored in the database.
+
+### Hashing Parameters:
+
+- Algorithm: PBKDF2WithHmacSHA256
+- Salt length: 16 bytes
+- Iterations: 65536
+- Key length: 256 bits
+
+## How to Run
+
+### Requirements:
+
+- Java 17 or newer
+- JavaFX SDK installed and configured
+- PostgreSQL server running
+
+### Setup PostgreSQL:
+
+```sql
+CREATE DATABASE passwordhasher;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    salt TEXT NOT NULL,
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL
+);     
