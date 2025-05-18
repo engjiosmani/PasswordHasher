@@ -1,4 +1,4 @@
-# PasswordHasher – JavaFX User Management System with Salted Hash Authentication
+# JavaFX User Authentication System with Secure Password Hashing
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.java.com/en/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-17+-blueviolet.svg)](https://openjfx.io/)
@@ -19,9 +19,9 @@ It includes an intuitive JavaFX GUI for login and registration, robust field val
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/engjiosmani/PasswordHasher.git     
+git clone https://github.com/engjiosmani/PasswordHasher.git
+```
 
-```md
 ## Project Description
 
 This JavaFX desktop application implements a complete sign-up and login flow with secure password storage using PBKDF2. It demonstrates how modern security standards can be implemented in a simple and clean desktop GUI application.
@@ -59,9 +59,10 @@ resources/
 │   ├── eye.png                       # Toggle icon for visible password
 │   └── hidden.png                    # Toggle icon for hidden password
 └── database/
-    └── passwordhasher.sql           # SQL script for table creation 
+    └── passwordhasher.sql           # SQL script for table creation
 
-```md
+```
+
 ## Password Security
 
 The application uses PBKDF2WithHmacSHA256 to hash passwords with a randomly generated salt. Each user gets a unique salt, and only the hashed password + salt are stored in the database.
@@ -94,4 +95,37 @@ CREATE TABLE users (
     firstName VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL
-);     
+);
+```
+
+### Update credentials:
+
+Edit `DBConnector.java`:
+
+```java
+private static final String DB_URL = "jdbc:postgresql://localhost/passwordhasher";
+private static final String USER = "java";
+private static final String PASSWORD = "123";
+```
+
+### Run the application:
+
+Execute the `main` method in `app.java` to launch the GUI.
+
+## Example Workflow
+
+1. User signs up with a new email and password
+2. A random salt is generated
+3. The password is hashed using PBKDF2 with the salt
+4. Hash and salt are saved in the database
+5. During login, the password is re-hashed and verified
+
+## Screenshots
+
+![image](https://github.com/user-attachments/assets/d3e5621b-2155-4b40-ba73-1a80dbb08d25)
+
+![image](https://github.com/user-attachments/assets/7ea3b79b-e9d9-4e98-8634-5bd6769752a0)
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)
