@@ -1,8 +1,6 @@
 module com.example.passwordhasher {
     requires javafx.controls;
     requires javafx.fxml;
-
-    requires com.dlsc.formsfx;
     requires java.sql;
 
     exports application;
