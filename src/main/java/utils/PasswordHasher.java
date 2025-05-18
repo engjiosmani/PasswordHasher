@@ -40,3 +40,19 @@ public class PasswordHasher {
             sb.append("4. Algorithm: ").append(ALGORITHM).append("\n\n");
             sb.append("5. Iterations: ").append(ITERATIONS).append("\n\n");
             sb.append("6. Key Length: ").append(KEY_LENGTH).append(" bits\n\n");
+            sb.append("7. Hashed Password (Base64): ").append(hashBase64).append("\n\n");
+
+        } catch (Exception e) {
+            sb.append("Error during hashing: ").append(e.getMessage()).append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
+    public static String hashPassword(String password, String saltString)
+            throws NoSuchAlgorithmException, InvalidKeySpecException {
+        byte[] salt = PasswordHasher.decodeSalt(saltString);
+        PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATIONS, KEY_LENGTH);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
+        byte[] hash = factory.generateSecret(spec).getEncoded();
