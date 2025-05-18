@@ -20,3 +20,43 @@ It includes an intuitive JavaFX GUI for login and registration, robust field val
 
 ```bash
 git clone https://github.com/engjiosmani/PasswordHasher.git     
+
+```md
+## Project Description
+
+This JavaFX desktop application implements a complete sign-up and login flow with secure password storage using PBKDF2. It demonstrates how modern security standards can be implemented in a simple and clean desktop GUI application.
+
+The system allows users to:
+
+- Create a new account with proper validations
+- Automatically generate salt for every user
+- Store passwords securely in the database using hash + salt
+- Log in using email and password, with backend verification
+- Toggle visibility for password fields
+- Receive feedback via dialogs for success or failure
+- Store and retrieve user data using a PostgreSQL database
+
+## Code Structure
+
+```text
+src/
+├── application/
+│   └── app.java                      # Entry point of the application
+├── controller/
+│   ├── SignInController.java         # Handles sign-in logic
+│   └── SignUpController.java         # Handles sign-up logic
+├── utils/
+│   ├── DBConnector.java              # PostgreSQL DB connection
+│   ├── DBUserFunctions.java          # Queries for user registration/login
+│   ├── PasswordHasher.java          # Hashing and salting logic (PBKDF2)
+│   ├── Session.java                  # Session management
+│   └── Users.java                    # User model
+resources/
+├── fxml/
+│   ├── signin.fxml                   # Login interface
+│   └── signup.fxml                   # Registration interface
+├── images/
+│   ├── eye.png                       # Toggle icon for visible password
+│   └── hidden.png                    # Toggle icon for hidden password
+└── database/
+    └── passwordhasher.sql           # SQL script for table creation 
