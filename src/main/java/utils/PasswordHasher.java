@@ -20,4 +20,3 @@ public class PasswordHasher {
         try {
             byte[] saltBytes = generateSalt();
             String saltBase64 = encodeSalt(saltBytes);
-            
