@@ -111,3 +111,31 @@ public class SignInController{
         });
 
     }
+
+    @FXML
+    public void unhidePassword() {
+        if (password.isVisible()) {
+            passwordFieldText.setText(password.getText());
+            password.setManaged(false);
+            password.setVisible(false);
+            passwordFieldText.setManaged(true);
+            passwordFieldText.setVisible(true);
+            Image image = new Image(getClass().getResource("/images/eye.png").toExternalForm());
+            eye.setImage(image);
+            check = true;
+            passwordFieldText.requestFocus();
+
+        } else {
+            password.setText(passwordFieldText.getText());
+            password.setManaged(true);
+            password.setVisible(true);
+            passwordFieldText.setManaged(false);
+            passwordFieldText.setVisible(false);
+            Image image = new Image(getClass().getResource("/images/hidden.png").toExternalForm());
+            eye.setImage(image);
+            check = false;
+            password.requestFocus();
+
+        }
+    }
+}
